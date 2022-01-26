@@ -60,7 +60,7 @@
         </div>
       </form>
     </div>
-	<footer class="absolute bottom-0 w-full">
+	<footer>
     <div class="border-2 w-full h-1 border-white"></div>
     <div
       class="w-full h-24 flex justify-center bg-[url('@/assets/images/paper-grey.webp')] bg-cover"
