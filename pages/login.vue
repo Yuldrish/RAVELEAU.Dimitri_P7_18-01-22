@@ -48,7 +48,12 @@
               href="/"
               >Déconnexion</a
             >
-          </div>
+             <a
+              class="block bg-black hover:bg-opacity-0 hover:font-bold"
+              href="/signUp"
+              >S'inscrire</a
+            >
+         </div>
         </nav>
       </div>
       <div class="border-2 w-full h-1 border-white"></div>
