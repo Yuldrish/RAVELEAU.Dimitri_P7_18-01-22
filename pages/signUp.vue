@@ -56,36 +56,35 @@
           </div>
         </nav>
       </div>
-      <div class="border-2 w-full h-1 border-white"></div>
     </header>
     <div
-      class="w-full flex justify-center flex-col h-screen bg-[url('@/assets/images/social-network.webp')] bg-cover"
+      class="w-full h-full flex justify-center flex-col bg-white"
     >
-      <form class="w-4/5 mx-auto p-10 flex flex-col md:flex-row">
+      <form class="w-4/5 mx-auto p-10 bg-[url('@/assets/images/paper-grey.webp')] bg-cover rounded-lg flex flex-col md:flex-row m-5">
         <div class="flex w-full p-2 gap-5 flex-col md:w-1/2">
           <label
             class="text-lg text-center font-medium text-white"
-            for="password"
-            >Id<input
-              class="border-double border-4 rounded-lg p-2 w-full border-black text-black"
+            for="departement"
+            >Département<input
+              class=" border-4 rounded-lg p-2 w-full border-black text-black"
               type="text"
-              name="id"
-              placeholder="159354"
-              v-model="id"
+              name="departement"
+              placeholder="commercial"
+              v-model="departement"
               required
           /></label>
-          <label class="text-lg text-center font-medium text-white" for="email"
+          <label class="text-lg text-center font-medium text-white" for="name"
             >Nom<input
-              class="border-double border-4 rounded-lg p-2 w-full border-black text-black"
+              class=" border-4 rounded-lg p-2 w-full border-black text-black"
               type="text"
               name="name"
               placeholder="DOE"
               v-model="name"
               required
           /></label>
-          <label class="text-lg text-center font-medium text-white" for="email"
+          <label class="text-lg text-center font-medium text-white" for="firstName"
             >Prénom<input
-              class="border-double border-4 rounded-lg p-2 w-full border-black text-black"
+              class=" border-4 rounded-lg p-2 w-full border-black text-black"
               type="text"
               name="firstName"
               placeholder="John"
@@ -96,16 +95,16 @@
         <div class="flex w-full p-2 gap-5 flex-col md:w-1/2">
           <label class="text-lg text-center font-medium text-white" for="email"
             >Email<input
-              class="border-double border-4 rounded-lg p-2 w-full border-black text-black"
+              class=" border-4 rounded-lg p-2 w-full border-black text-black"
               type="email"
               name="email"
               placeholder="yuldrish@gmail.com"
               v-model="email"
               required
           /></label>
-          <label class="text-lg text-center font-medium text-white" for="email"
+          <label class="text-lg text-center font-medium text-white" for="password"
             >Password<input
-              class="border-double border-4 rounded-lg p-2 w-full border-black text-black"
+              class=" border-4 rounded-lg p-2 w-full border-black text-black"
               type="password"
               name="password"
               placeholder="********"
@@ -116,7 +115,7 @@
             class="text-lg text-center font-medium text-white"
             for="password"
             >Password confirmation<input
-              class="border-double border-4 rounded-lg p-2 w-full border-black text-black"
+              class=" border-4 rounded-lg p-2 w-full border-black text-black"
               type="password"
               name="password"
               placeholder="********"
@@ -128,14 +127,13 @@
       <div class="flex justify-center">
         <button
           @click="submitForm"
-          class="text-lg font-bold text-white rounded-lg w-1/2 border-white border-4 hover:bg-black sm:w-1/4"
+          class="text-lg font-bold rounded-lg w-1/2 border-black border-4 hover:bg-black hover:text-white sm:w-1/4"
         >
           Valider <i class="fas fa-user-plus"></i>
         </button>
       </div>
     </div>
-    <footer>
-      <div class="border-2 w-full h-1 border-white"></div>
+    <footer class="absolute -z-10 bottom-0 w-full">
       <div
         class="w-full h-24 flex justify-center bg-[url('@/assets/images/paper-grey.webp')] bg-cover"
       >
