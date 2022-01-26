@@ -53,7 +53,7 @@
       </div>
       <div class="border-2 w-full h-1 border-white"></div>
     </header>
-    <div
+    <body
       class="w-full flex justify-center h-screen bg-[url('@/assets/images/social-network.webp')] bg-cover"
     >
       <form class="w-3/4 mx-auto p-10">
@@ -86,7 +86,7 @@
           </button>
         </div>
       </form>
-    </div>
+    </body>
     <footer>
       <div class="border-2 w-full h-1 border-white"></div>
       <div
