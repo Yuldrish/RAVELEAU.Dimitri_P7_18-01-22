@@ -19,7 +19,7 @@
 		<div v-if="isOpen" class="absolute text-base w-40 text-white border-2 border-white rounded-lg text-center overflow-hidden shadow-xl">
 			<a class="block bg-black hover:bg-opacity-0 hover:font-bold" href="/">Accueil</a>
 			<a class="block bg-black hover:bg-opacity-0 hover:font-bold" href="/profil">Profil</a>
-			<a class="block bg-black hover:bg-opacity-0 hover:font-bold" href="login">Connexion</a>
+			<a class="block bg-black hover:bg-opacity-0 hover:font-bold" href="/login">Connexion</a>
 			<a class="block bg-black hover:bg-opacity-0 hover:font-bold" href="/">Déconnexion</a>
 		</div>
       </nav>
@@ -52,7 +52,6 @@
 
 <script>
 export default {
-  name: 'IndexPage',
   data() {
     return {
 	  isOpen: false,
