@@ -48,24 +48,21 @@
               href="/"
               >Déconnexion</a
             >
-             <a
+            <a
               class="block bg-black hover:bg-opacity-0 hover:font-bold"
               href="/signUp"
               >S'inscrire</a
             >
-         </div>
+          </div>
         </nav>
       </div>
-      <div class="border-2 w-full h-1 border-white"></div>
     </header>
-    <div
-      class="w-full flex justify-center h-screen bg-[url('@/assets/images/social-network.webp')] bg-cover"
-    >
-      <form class="w-3/4 mx-auto p-10">
+    <div class="w-full flex justify-center flex-col">
+      <form class="w-3/4 mx-auto mt-5 mb-5 p-10 bg-[url('@/assets/images/paper-grey.webp')] bg-cover rounded-lg">
         <div class="flex p-2 gap-5 flex-col mb-5">
           <label class="text-lg font-medium text-white" for="email"
             >Email<input
-              class="border-double border-4 rounded-lg p-2 w-full border-black text-black"
+              class="border-4 rounded-lg p-2 w-full border-black text-black"
               type="email"
               name="email"
               placeholder="yuldrish@gmail.com"
@@ -74,7 +71,7 @@
           /></label>
           <label class="text-lg font-medium text-white" for="password"
             >Password<input
-              class="border-double border-4 rounded-lg p-2 w-full border-black text-black"
+              class="border-4 rounded-lg p-2 w-full border-black text-black"
               type="password"
               name="password"
               placeholder="********"
@@ -82,18 +79,17 @@
               required
           /></label>
         </div>
-        <div class="flex justify-center">
-          <button
-            @click="submitForm"
-            class="text-lg font-bold text-white rounded-lg w-1/4 border-white border-4 hover:bg-black"
-          >
-            Login <i class="fas fa-sign-in-alt"></i>
-          </button>
-        </div>
       </form>
+      <div class="flex justify-center">
+        <button
+          @click="submitForm"
+          class="text-lg font-bold text-black rounded-lg w-1/4 border-black border-4 hover:bg-black hover:text-white"
+        >
+          Login <i class="fas fa-sign-in-alt"></i>
+        </button>
+      </div>
     </div>
-    <footer>
-      <div class="border-2 w-full h-1 border-white"></div>
+    <footer class="fixed -z-10 bottom-0 w-full">
       <div
         class="w-full h-24 flex justify-center bg-[url('@/assets/images/paper-grey.webp')] bg-cover"
       >
