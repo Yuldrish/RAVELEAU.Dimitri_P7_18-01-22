@@ -1,5 +1,6 @@
 <template>
   <div>
+	<header>
     <div
       class="w-full h-48 flex justify-center relative bg-[url('@/assets/images/paper-grey.webp')] bg-cover"
     >
@@ -16,14 +17,15 @@
 		</button>
 		<button v-if="isOpen" @click="isOpen = false" tabindex="-1" class="fixed inset-0 h-full w-full bg-black opacity-50"></button>
 		<div v-if="isOpen" class="absolute text-base w-40 text-white border-2 border-white rounded-lg text-center overflow-hidden shadow-xl">
-			<a class="block bg-black hover:bg-opacity-0 hover:font-bold" href="#">Accueil</a>
-			<a class="block bg-black hover:bg-opacity-0 hover:font-bold" href="/login">Profil</a>
-			<a class="block bg-black hover:bg-opacity-0 hover:font-bold" href="#">Connexion</a>
-			<a class="block bg-black hover:bg-opacity-0 hover:font-bold" href="#">Déconnexion</a>
+			<a class="block bg-black hover:bg-opacity-0 hover:font-bold" href="/">Accueil</a>
+			<a class="block bg-black hover:bg-opacity-0 hover:font-bold" href="/profil">Profil</a>
+			<a class="block bg-black hover:bg-opacity-0 hover:font-bold" href="/login">Connexion</a>
+			<a class="block bg-black hover:bg-opacity-0 hover:font-bold" href="/">Déconnexion</a>
 		</div>
       </nav>
     </div>
     <div class="border-2 w-full h-1 border-white"></div>
+	</header>
     <div
       class="w-full flex justify-center h-screen bg-[url('@/assets/images/social-network.webp')] bg-cover"
     >
@@ -58,6 +60,7 @@
         </div>
       </form>
     </div>
+	<footer class="absolute bottom-0 w-full">
     <div class="border-2 w-full h-1 border-white"></div>
     <div
       class="w-full h-24 flex justify-center bg-[url('@/assets/images/paper-grey.webp')] bg-cover"
@@ -77,6 +80,7 @@
         </li>
       </ul>
     </div>
+	</footer>
   </div>
 </template>
 
