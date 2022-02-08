@@ -44,7 +44,7 @@
       </div>
       <div v-else class="flex flex-row h-full w-full">
         <div class="h-full w-full flex flex-col">
-          <router-link to="/newPost" class="bg-gray-500"
+          <router-link to="/newPost" class="bg-black bg-opacity-50 text-white text-center h-7 text-lg hover:bg-opacity-75 hover:duration-300"
             >Nouvelle publication</router-link
           >
           <div class="flex flex-col w-full items-center gap-10">
