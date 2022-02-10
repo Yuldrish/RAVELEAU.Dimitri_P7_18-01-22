@@ -44,7 +44,7 @@
           @click="submitForm"
           class="text-lg font-bold rounded-lg w-1/2 border-black border-4 hover:bg-black hover:text-white sm:w-1/4"
         >
-          Supprimer le compte <i class="fas fa-user-times"></i></i>
+          Supprimer le compte <i class="fas fa-user-times"></i>
         </button>
       </div>
     </body>
