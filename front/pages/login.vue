@@ -16,7 +16,15 @@
         <div class="flex p-2 gap-5 flex-col mb-5">
           <label class="text-lg font-medium text-white" for="email"
             >Email<input
-              class="border-4 rounded-lg p-2 w-full border-black text-black"
+              class="
+                border-4
+                rounded-lg
+                p-2
+                w-full
+                border-black
+                text-black
+                focus:outline-none
+              "
               type="email"
               name="email"
               placeholder="yuldrish@gmail.com"
@@ -25,7 +33,15 @@
           /></label>
           <label class="text-lg font-medium text-white" for="password"
             >Password<input
-              class="border-4 rounded-lg p-2 w-full border-black text-black"
+              class="
+                border-4
+                rounded-lg
+                p-2
+                w-full
+                border-black
+                text-black
+                focus:outline-none
+              "
               type="password"
               name="password"
               placeholder="********"
