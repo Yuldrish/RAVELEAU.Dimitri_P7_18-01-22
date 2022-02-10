@@ -17,7 +17,16 @@
           class="h-full"
         />
       </div>
-      <nav class="absolute right-3 bottom-3 sm:right-5 sm:bottom-5 flex flex-col items-end">
+      <nav
+        class="
+          absolute
+          right-3
+          bottom-3
+          sm:right-5 sm:bottom-5
+          flex flex-col
+          items-end
+        "
+      >
         <button
           @click="isOpen = !isOpen"
           tabindex="-1"
@@ -59,27 +68,47 @@
           "
         >
           <router-link
-            class="block bg-black hover:bg-opacity-0 hover:font-bold"
+            class="
+              block
+              bg-black
+              hover:bg-opacity-25 hover:font-bold hover:duration-300
+            "
             to="/"
             >Accueil
           </router-link>
           <router-link
-            class="block bg-black hover:bg-opacity-0 hover:font-bold"
+            class="
+              block
+              bg-black
+              hover:bg-opacity-25 hover:font-bold hover:duration-300
+            "
             to="/profil"
             >Profil
           </router-link>
           <router-link
-            class="block bg-black hover:bg-opacity-0 hover:font-bold"
+            class="
+              block
+              bg-black
+              hover:bg-opacity-25 hover:font-bold hover:duration-300
+            "
             to="/login"
             >Connexion
           </router-link>
           <router-link
-            class="block bg-black hover:bg-opacity-0 hover:font-bold"
+            class="
+              block
+              bg-black
+              hover:bg-opacity-25 hover:font-bold hover:duration-300
+            "
             to="/"
             >Déconnexion
           </router-link>
           <router-link
-            class="block bg-black hover:bg-opacity-0 hover:font-bold"
+            class="
+              block
+              bg-black
+              hover:bg-opacity-25 hover:font-bold hover:duration-300
+            "
             to="/signUp"
             >S'inscrire
           </router-link>
