@@ -2,47 +2,7 @@
   <div class="h-screen">
     <Header />
     <body class="h-3/4">
-      <div
-        v-if="!loginOk"
-        class="h-full w-full flex justify-center items-center"
-      >
-        <div
-          class="
-            bg-[url('@/assets/images/paper-grey.webp')] bg-cover
-            rounded-2xl
-            w-4/6
-            h-3/6
-            text-white
-            flex
-            justify-center
-            flex-col
-            items-center
-            text-center
-            font-bold
-            text-2xl
-          "
-        >
-          <p>
-            Authentification requise. Veuillez vous <br />
-            connecter pour accéder au forum.
-          </p>
-          <br />
-          <router-link
-            to="/login"
-            class="
-              mt-3
-              border-white border-2
-              rounded-lg
-              py-2
-              px-4
-              flex
-              justify-center
-            "
-            >Login
-          </router-link>
-        </div>
-      </div>
-      <div v-else class="flex flex-row h-full w-full">
+      <div class="flex flex-row h-full w-full">
         <div class="h-full w-full flex flex-col">
           <router-link
             to="/newPost"
@@ -95,5 +55,6 @@ export default {
   },
 
   methods: {},
+  middleware: 'authenticated'
 }
 </script>

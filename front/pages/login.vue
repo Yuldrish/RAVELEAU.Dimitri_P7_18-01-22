@@ -83,20 +83,19 @@ export default {
 
   data() {
     return {
-      email: null,
-      isOpen: false,
+      email: '',
+      password: '',
     }
   },
   methods: {
-    submitForm: function (event) {
-      event.preventDefault()
-      console.log(this.email)
+    submitForm: function () {
+      let data = { email: this.email, password: this.password }
+
+      this.$store
+        .dispatch('login', data)
+        .then(() => this.$router.push('/'))
+        .catch((err) => console.log(err))
     },
   },
-  // watch: {
-  //   email: function (newEmail, oldEmail) {
-  //     alert(`l'ancien email c'est ${oldEmail} et le nouveau c'est ${newEmail}`)
-  //   },
-  // },
 }
 </script>

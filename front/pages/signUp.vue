@@ -124,7 +124,7 @@
               type="password"
               name="password"
               placeholder="********"
-              v-model="password"
+              v-model="ctrlpassword"
               required
           /></label>
         </div>
@@ -162,7 +162,28 @@ export default {
 
   data() {
     return {
-      isOpen: false,
+      email: '',
+      password: '',
+      ctrlpassword: '',
+      name: '',
+      firstname: '',
+      departement: '',
+    }
+  },
+
+  methods: {
+    submitForm: function () {
+      let data = {
+        email: this.email,
+        password: this.password,
+        ctrlpassword: this.ctrlpassword,
+        name: this.name,
+        firstname: this.firstname,
+        departement: this.departement,
+      }
+      this.$store.dispatch('register', data)
+        .then(() => this.$router.push('/'))
+        .catch((err) => console.log(err))
     }
   },
 }

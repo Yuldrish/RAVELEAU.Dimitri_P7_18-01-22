@@ -1,6 +1,5 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
 const path = require("path");
 const helmet = require("helmet");
 
@@ -8,14 +7,6 @@ require("dotenv").config();
 
 const postRoutes = require("./routes/Post");
 const userRoutes = require("./routes/User");
-
-mongoose
-  .connect(
-    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`, 
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
-  .then(() => console.log("Connexion à MongoDB réussie !"))
-  .catch((error) => console.log( error));
 
 const app = express();
 

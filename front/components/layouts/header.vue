@@ -86,6 +86,7 @@
             >Profil
           </router-link>
           <router-link
+            v-if="!isLoggedIn"
             class="
               block
               bg-black
@@ -94,16 +95,20 @@
             to="/login"
             >Connexion
           </router-link>
-          <router-link
+          <button
+            v-if="isLoggedIn"
+            @click="logout"
             class="
               block
+              w-full
               bg-black
               hover:bg-opacity-25 hover:font-bold hover:duration-300
             "
-            to="/"
-            >Déconnexion
-          </router-link>
+          >
+            Déconnexion
+          </button>
           <router-link
+            v-if="!isLoggedIn"
             class="
               block
               bg-black
@@ -125,6 +130,20 @@ export default {
     return {
       isOpen: false,
     }
+  },
+
+  computed: {
+    isLoggedIn: function () {
+      return this.$store.getters.isLoggedIn
+    },
+  },
+
+  methods: {
+    logout: function () {
+      this.$store.dispatch('logout').then(() => {
+        this.$router.push('/')
+      })
+    },
   },
 }
 </script>

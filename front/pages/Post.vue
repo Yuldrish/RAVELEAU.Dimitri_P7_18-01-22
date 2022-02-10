@@ -28,8 +28,13 @@
             </div>
             <div><i class="fas fa-ellipsis-h"></i></div>
           </header>
-
-          <h1 class="text-2xl font-bold">test</h1>
+          <div class="flex justify-between">
+            <h1 class="text-2xl font-bold">test</h1>
+            <div class="flex gap-x-2 items-end text-2xl">
+              <i class="far fa-thumbs-up"></i>
+              <i class="far fa-thumbs-down -mb-1.5"></i>
+            </div>
+          </div>
           <div>
             <p>test</p>
             <div class="w-full">

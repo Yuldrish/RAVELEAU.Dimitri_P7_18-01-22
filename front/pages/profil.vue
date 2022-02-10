@@ -61,5 +61,6 @@ export default {
     Header,
     Footer,
   },
+    middleware: 'authenticated'
 }
 </script>

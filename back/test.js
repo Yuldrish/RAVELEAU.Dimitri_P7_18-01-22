@@ -1,10 +1,11 @@
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
+const bcrypt = require("bcrypt");
 
 async function main() {
   // ... you will write your Prisma Client queries here
-  [
+  /*   [
     {
       id: 1,
       dateTime: "8/7/2021",
@@ -109,7 +110,16 @@ async function main() {
       .then((newPost) => {
         console.log("newPost", newPost);
       });
+  }); */
+  const password = await bcrypt.hash("1234567890", 10);
+  console.log("🚀 ~ file: test.js ~ line 115 ~ main ~ password", password);
+  const user = await prisma.user.update({
+    where: { email: "bcreber2@cbsnews.com" },
+    data: {
+      password,
+    },
   });
+  console.log("🚀 ~ file: test.js ~ line 122 ~ main ~ user", user);
 }
 
 main()
