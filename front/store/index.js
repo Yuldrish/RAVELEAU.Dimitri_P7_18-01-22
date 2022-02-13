@@ -6,11 +6,11 @@ export const state = () => ({
   posts: null,
   status: '',
   user: null,
-  token: process.server ? '' : localStorage.getItem('token'),
+  token: localStorage.getItem('token') || '',
 })
 
 export const getters = {
-  isLoggedIn: (state) => (process.server ? '' : !!state.token),
+  isLoggedIn: (state) => !!state.token,
   authStatus: (state) => state.status,
 }
 

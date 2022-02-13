@@ -181,10 +181,12 @@ export default {
         firstname: this.firstname,
         departement: this.departement,
       }
-      this.$store.dispatch('register', data)
+      this.$store
+        .dispatch('register', data)
         .then(() => this.$router.push('/'))
         .catch((err) => console.log(err))
-    }
+    },
   },
+  middleware: 'authenticated',
 }
 </script>
