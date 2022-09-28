@@ -20,18 +20,15 @@
       </div>
       <div class="flex-grow">
         <p>{{ user.name }}</p>
-        <p>{{ post.dateTime }}</p>
+        <p>{{ comment.dateTime }}</p>
       </div>
+      <div><i class="fas fa-eraser"></i><i class="fas fa-trash"></i></div>
     </header>
 
-    <h1 class="text-2xl font-bold">{{ post.title }}</h1>
     <div>
       <p>
-        {{ post.content }}
+        {{ comment.content }}
       </p>
-      <div class="w-full">
-        <img :src="post.multimedia" class="object-cover w-full" />
-      </div>
     </div>
   </div>
 </template>
@@ -39,11 +36,11 @@
 <script>
 export default {
   props: {
-    post: {
-      type: Object,
-      default: { id: 'blabalaba' },
-      required: true,
-    },
+    // comment: {
+    //   type: Object,
+    //   default: { id: 'blabalaba' },
+    //   required: true,
+    // },
   },
 
   data() {
@@ -53,27 +50,15 @@ export default {
         name: 'Equipe Openclassroooms blabalaba',
         photo: 'https://picsum.photos/50',
       },
+      comment: {
+        dateTime: '00/00/00 00h00',
+        content:
+          'Cras sed fermentum augue. Cras eget consectetur turpis. Nunc a mauris quis sem dignissim accumsan. Nullam id dignissim urna. Aliquam arcu ligula, pretium ut malesuada ut, gravida in risus. Aliquam erat volutpat. Cras congue bibendum justo, sed commodo odio feugiat et. Fusce sit amet molestie felis.',
+      },
     }
   },
 
-    computed: {
-    posts() {
-      return this.$store.state.posts
-    },
-        users() {
-      return this.$store.state.users
-    },
-
-    
-  },
-  created() {
-    if (this.$store.state.posts == null) {
-      this.$store.dispatch('getPosts')
-    }
-        if (this.$store.state.users == null) {
-      this.$store.dispatch('getUsers')
-    }
-  },
-
+  computed: {},
+  created() {},
 }
 </script>

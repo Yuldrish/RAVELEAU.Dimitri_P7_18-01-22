@@ -8,9 +8,7 @@ module.exports = (req, res, next) => {
     const userId = decodedToken.userId;
 
     // Vérification de la concordance entre les clés utilisateurs
-    if (req.body.userId && req.body.userId !== userId) {
-      throw "User ID non valable !";
-    } else {
+    if (userId) {
       next();
     }
   } catch (error) {

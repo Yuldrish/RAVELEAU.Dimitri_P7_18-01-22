@@ -73,7 +73,7 @@ exports.modifyPost = (req, res, next) => {
 
 // Suppression d'une seule post (son image reste sur le serveur)
 exports.deletePost = (req, res, next) => {
-  Post.findOne({ _id: req.params.id })
+  prisma.Post.findUnique({ _id: req.params.id })
     .then((post) => {
       const filename = post.imageUrl.split("/images/")[1];
       fs.unlink(`images/${filename}`, () => {
@@ -99,44 +99,44 @@ exports.getAllPost = (req, res, next) => {
     });
 };
 
-// // Ajout des likes et dislikes pour chaque post
-// exports.likePost = (req, res) => {
-//   /* Si le client Like cette post */
-//   if (req.body.like === 1) {
-//     Post.findOneAndUpdate(
-//       { _id: req.params.id },
-//       { $inc: { likes: 1 }, $push: { usersLiked: req.body.userId } }
-//     )
-//       .then(() => res.status(200).json({ message: "Like ajouté !" }))
-//       .catch((error) => res.status(400).json({ error }));
+// Ajout des likes et dislikes pour chaque post
+exports.likePost = (req, res) => {
+  /* Si un utilisateur Like un post */
+  if (req.body.like === 1) {
+    Post.findOneAndUpdate(
+      { _id: req.params.id },
+      { $inc: { likes: 1 }, $push: { usersLiked: req.body.userId } }
+    )
+      .then(() => res.status(200).json({ message: "Like ajouté !" }))
+      .catch((error) => res.status(400).json({ error }));
 
-//     /* Si le client disike cette post */
-//   } else if (req.body.like === -1) {
-//     Post.findOneAndUpdate(
-//       { _id: req.params.id },
-//       { $inc: { dislikes: 1 }, $push: { usersDisliked: req.body.userId } }
-//     )
-//       .then(() => res.status(200).json({ message: "Dislike ajouté !" }))
-//       .catch((error) => res.status(400).json({ error }));
+    /* Si un utilisateur disike un post */
+  } else if (req.body.like === -1) {
+    Post.findOneAndUpdate(
+      { _id: req.params.id },
+      { $inc: { dislikes: 1 }, $push: { usersDisliked: req.body.userId } }
+    )
+      .then(() => res.status(200).json({ message: "Dislike ajouté !" }))
+      .catch((error) => res.status(400).json({ error }));
 
-//     /* Si le client annule son choix */
-//   } else {
-//     Post.findOne({ _id: req.params.id }).then((resultat) => {
-//       if (resultat.usersLiked.includes(req.body.userId)) {
-//         Post.findOneAndUpdate(
-//           { _id: req.params.id },
-//           { $inc: { likes: -1 }, $pull: { usersLiked: req.body.userId } }
-//         )
-//           .then(() => res.status(200).json({ message: "like retiré !" }))
-//           .catch((error) => res.status(400).json({ error }));
-//       } else if (resultat.usersDisliked.includes(req.body.userId)) {
-//         Post.findOneAndUpdate(
-//           { _id: req.params.id },
-//           { $inc: { dislikes: -1 }, $pull: { usersDisliked: req.body.userId } }
-//         )
-//           .then(() => res.status(200).json({ message: "dislike retiré !" }))
-//           .catch((error) => res.status(400).json({ error }));
-//       }
-//     });
-//   }
-// };
+    /* Si un utilisateur annule son choix */
+  } else {
+    Post.findOne({ _id: req.params.id }).then((resultat) => {
+      if (resultat.usersLiked.includes(req.body.userId)) {
+        Post.findOneAndUpdate(
+          { _id: req.params.id },
+          { $inc: { likes: -1 }, $pull: { usersLiked: req.body.userId } }
+        )
+          .then(() => res.status(200).json({ message: "like retiré !" }))
+          .catch((error) => res.status(400).json({ error }));
+      } else if (resultat.usersDisliked.includes(req.body.userId)) {
+        Post.findOneAndUpdate(
+          { _id: req.params.id },
+          { $inc: { dislikes: -1 }, $pull: { usersDisliked: req.body.userId } }
+        )
+          .then(() => res.status(200).json({ message: "dislike retiré !" }))
+          .catch((error) => res.status(400).json({ error }));
+      }
+    });
+  }
+};

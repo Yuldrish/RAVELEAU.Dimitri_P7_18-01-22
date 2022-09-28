@@ -6,6 +6,8 @@ export const state = () => ({
   posts: null,
   status: '',
   user: null,
+  userId: localStorage.getItem('userId'),
+  comments: null,
   token: localStorage.getItem('token') || '',
 })
 
@@ -21,13 +23,22 @@ export const mutations = {
   UPDATE_POSTS(state, posts) {
     state.posts = posts
   },
+  UPDATE_COMMENT(state, comments) {
+    state.comments = comments
+  },
+  UPDATE_USERS(state, users) {
+    state.users = users
+  },
+  UPDATE_ONE_USER(state, user) {
+    state.user = user
+  },
   auth_request(state) {
     state.status = 'loading'
   },
   auth_success(state, payload) {
     state.status = 'success'
     state.token = payload.token
-    state.user = payload.user
+    state.userId = payload.userId
   },
   auth_error(state) {
     state.status = 'error'
@@ -39,26 +50,19 @@ export const mutations = {
 }
 
 export const actions = {
-  async login({ commit }, userData) {
-    console.log('🚀 ~ file: index.js ~ line 43 ~ login ~ userData', userData)
+  async register({ commit }, userData) {
     try {
       commit('auth_request')
-      console.log('🚀 ~ file: index.js ~ line 43 ~ login ~ userData', userData)
       const userDataString = JSON.stringify(userData)
-      console.log(
-        '🚀 ~ file: index.js ~ line 50 ~ login ~ userDataString',
-        userDataString
-      )
-      const resp = await fetch(`${apiUrl}/auth/login`, {
+      userDataString
+      const resp = await fetch(`${apiUrl}/auth/signup`, {
         method: 'POST',
         body: userDataString,
         headers: {
           'Content-Type': 'application/json',
         },
       })
-      console.log('🚀 ~ file: index.js ~ line 53 ~ login ~ resp', resp)
       const data = await resp.json()
-      console.log('🚀 ~ file: index.js ~ line 61 ~ login ~ data', data)
       const token = data.token
       const user = data.user
       localStorage.setItem('token', token)
@@ -70,33 +74,53 @@ export const actions = {
       return error
     }
   },
-  /* login({ commit }, user) {
-    return new Promise((resolve, reject) => {
-      commit('auth-request')
-      fetch(`${apiUrl}/auth/login`, {
-        method: 'POST',
-        body: JSON.stringify(user),
-      }).then((resp) => {
-        resp.json().then((data) => {
-          const token = data.token
-          const user = data.user
 
-          localStorage.setItem('token', token)
-          commit('auth_success', { token, user })
-          resolve(data)
-        })
+  async login({ commit }, userData) {
+    try {
+      commit('auth_request')
+      const userDataString = JSON.stringify(userData)
+      userDataString
+      const resp = await fetch(`${apiUrl}/auth/login`, {
+        method: 'POST',
+        body: userDataString,
+        headers: {
+          'Content-Type': 'application/json',
+        },
       })
-    })
-    const user = {
-      id: 'sffsdfsfs',
-      name: 'Equipe Openclassroooms blabalaba',
-      photo: 'https://picsum.photos/50',
+      const data = await resp.json()
+      const token = data.token
+      const userId = data.userId
+      localStorage.setItem('token', token)
+      localStorage.setItem('userId', userId)
+      commit('auth_success', { token, userId })
+      return data
+    } catch (error) {
+      commit('auth_error')
+      localStorage.removeItem('token')
+      return error
     }
-    commit('LOGIN', user)
-  }, */
+  },
+
+  logout({ commit }) {
+    return new Promise((resolve, reject) => {
+      commit('logout')
+      localStorage.removeItem('token')
+      resolve()
+    })
+  },
 
   async getPosts({ commit }) {
-    const posts = await (await fetch(`${apiUrl}/posts`)).json()
-    commit('UPDATE_POSTS', posts)
+    const posts = await this.$axios(`${apiUrl}/posts`)
+    commit('UPDATE_POSTS', posts.data)
+  },
+
+  async getUsers({ commit }) {
+    const users = await this.$axios(`${apiUrl}/auth`)
+    commit('UPDATE_USERS', users.data)
+  },
+
+  async getOneUser({ commit, state }) {
+    const user = await this.$axios(`${apiUrl}/auth/profil/${state.userId}`)
+    commit('UPDATE_ONE_USER', user.data)
   },
 }

@@ -29,8 +29,6 @@
               type="text"
               name="title"
               placeholder="Titre de la publication"
-              v-model="title"
-              required
           /></label>
           <label class="text-lg font-medium text-white" for="message"
             >Message
@@ -49,8 +47,6 @@
                 focus:outline-none
               "
               placeholder="Message de la publication"
-              v-model="message"
-              required
             ></textarea>
           </label>
           <button
@@ -71,13 +67,13 @@
             "
           >
             Ajouter
-            <span class="text-xs -mt-2"> {{ multimedia }} </span>
+            <span class="text-xs -mt-2"> Img, Video </span>
           </button>
         </div>
       </form>
       <div class="flex flex-col gap-3 items-center">
         <router-link
-          @click="submitPost"
+          @click="submitModPost"
           class="
             text-lg
             font-bold

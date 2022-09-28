@@ -29,6 +29,7 @@
               name="email"
               placeholder="yuldrish@gmail.com"
               v-model="email"
+              pattern="[a-zA-Z0-9._-]+[@]{1}[a-zA-Z0-9._-]+[.]{1}[a-z]{2,10}"
               required
           /></label>
           <label class="text-lg font-medium text-white" for="password"

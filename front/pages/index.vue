@@ -6,19 +6,18 @@
         <div class="h-full w-full flex flex-col">
           <router-link
             to="/newPost"
-            class="
-              bg-black bg-opacity-50
-              text-white text-center
-              h-7
-              text-lg
-              hover:bg-opacity-75 hover:duration-300
-            "
+            class="bg-black bg-opacity-50 text-white text-center h-7 mb-8 text-lg hover:bg-opacity-75 hover:duration-300"
             >Nouvelle publication</router-link
           >
           <div class="flex flex-col w-full items-center gap-10">
-            <div v-for="post in posts" :key="post.id" class="w-2/3">
+            <router-link
+              :to="'/' + post.id"
+              v-for="post in posts"
+              :key="post.id"
+              class="w-2/3 hover:scale-105"
+            >
               <Post :post="post" />
-            </div>
+            </router-link>
           </div>
         </div>
       </div>
@@ -39,22 +38,21 @@ export default {
 
   name: 'IndexPage',
   data() {
-    return {
-      loginOk: true,
-    }
+    return {}
   },
   computed: {
     posts() {
       return this.$store.state.posts
     },
+    
   },
   created() {
-    if (this.loginOk && this.$store.state.posts == null) {
+    if (this.$store.state.posts == null) {
       this.$store.dispatch('getPosts')
     }
   },
 
   methods: {},
-  middleware: 'authenticated'
+  middleware: 'authenticated',
 }
 </script>
